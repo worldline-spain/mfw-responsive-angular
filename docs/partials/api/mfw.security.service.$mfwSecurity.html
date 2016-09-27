@@ -1,0 +1,94 @@
+<a href="https://github.com/worldline-spain/mfw-responsive-angular/blob/75af72a/src/mfw-security.service.js#L158" class="view-source"><i class="icon-eye-open"> </i>View source</a><h1><code ng:non-bindable="">$mfwSecurity</code>
+<div><span class="hint">service in module <code ng:non-bindable="">mfw.security</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="mfw-security-service-page mfw-security-service--mfwsecurity-page"><p>Authorization service.</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><a href="https://github.com/worldline-spain/mfw-responsive-angular/blob/75af72a/src/mfw-security.service.js#L209" class="view-source icon-eye-open"> </a><h3 id="methods_activate">activate(userInfo)</h3>
+<div class="activate"><div class="mfw-security-service-page mfw-security-service--mfwsecurity-activate-page"><p>Method that checks whether stored credentials from a previous session are still valid or not.</p>
+<p>If valid will login with those credentials (and trigger <a href="#/api/mfw.security.service:$mfwSecurity#events_$mfwsecuritylogin"><code>$mfwSecurityLogin</code></a> event),
+otherwise will clear stored cache and load a logout session (and trigger
+<a href="#/api/mfw.security.service:$mfwSecurity#events_$mfwsecuritylogin"><code>$mfwSecurityLogout</code></a> event).</p>
+<p>It checks for stored user credentials in order to activate a previous session.</p>
+</div><h5 id="methods_activate_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>userInfo</td><td><a href="" class="label type-hint type-hint-userinfo">UserInfo</a></td><td><div class="mfw-security-service-page mfw-security-service--mfwsecurity-activate-page"><p>Full user info or stored user credentials.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><a href="https://github.com/worldline-spain/mfw-responsive-angular/blob/75af72a/src/mfw-security.service.js#L377" class="view-source icon-eye-open"> </a><h3 id="methods_hasallpermissions">hasAllPermissions(permissions)</h3>
+<div class="hasallpermissions"><h5 id="methods_hasallpermissions_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>permissions</td><td><a href="" class="label type-hint type-hint-string">String</a><a href="" class="label type-hint type-hint-string">String[]</a></td><td><div class="mfw-security-service-page mfw-security-service--mfwsecurity-hasallpermissions-page"><p>Permissions to check</p>
+</div></td></tr></tbody></table><h5 id="methods_hasallpermissions_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="mfw-security-service-page mfw-security-service--mfwsecurity-hasallpermissions-page"><p>Whether user has all the specified permissions.</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="https://github.com/worldline-spain/mfw-responsive-angular/blob/75af72a/src/mfw-security.service.js#L341" class="view-source icon-eye-open"> </a><h3 id="methods_hasanypermission">hasAnyPermission(permissions)</h3>
+<div class="hasanypermission"><h5 id="methods_hasanypermission_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>permissions</td><td><a href="" class="label type-hint type-hint-string">String</a><a href="" class="label type-hint type-hint-string">String[]</a></td><td><div class="mfw-security-service-page mfw-security-service--mfwsecurity-hasanypermission-page"><p>Permissions to check</p>
+</div></td></tr></tbody></table><h5 id="methods_hasanypermission_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="mfw-security-service-page mfw-security-service--mfwsecurity-hasanypermission-page"><p>Whether user has at least one of the specified permissions.</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="https://github.com/worldline-spain/mfw-responsive-angular/blob/75af72a/src/mfw-security.service.js#L184" class="view-source icon-eye-open"> </a><h3 id="methods_init">init()</h3>
+<div class="init"><div class="mfw-security-service-page mfw-security-service--mfwsecurity-init-page"><p>Initializer method, to be called when module is loaded.</p>
+<p>It checks for stored user credentials in order to activate a previous session.</p>
+</div></div>
+</li>
+<li><a href="https://github.com/worldline-spain/mfw-responsive-angular/blob/75af72a/src/mfw-security.service.js#L288" class="view-source icon-eye-open"> </a><h3 id="methods_islogged">isLogged()</h3>
+<div class="islogged"><h5 id="methods_islogged_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="mfw-security-service-page mfw-security-service--mfwsecurity-islogged-page"><p>Whether user is currently logged or not</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="https://github.com/worldline-spain/mfw-responsive-angular/blob/75af72a/src/mfw-security.service.js#L242" class="view-source icon-eye-open"> </a><h3 id="methods_logged">logged(user)</h3>
+<div class="logged"><div class="mfw-security-service-page mfw-security-service--mfwsecurity-logged-page"><p>Method that configures a new session with new valid credentials.</p>
+<p>This method triggers <a href="#/api/mfw.security.service:$mfwSecurity#events_$mfwsecuritylogin"><code>$mfwSecurityLogin</code></a> event.</p>
+</div><h5 id="methods_logged_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>user</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="mfw-security-service-page mfw-security-service--mfwsecurity-logged-page"><p>Logged user. Will be parsed using a user parser. See <a href="#/api/mfw.security.constant:$mfwSecurityConfig#userinfoparser"><code>$mfwSecurityConfig.userInfoParser</code></a>.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><a href="https://github.com/worldline-spain/mfw-responsive-angular/blob/75af72a/src/mfw-security.service.js#L261" class="view-source icon-eye-open"> </a><h3 id="methods_logout">logout()</h3>
+<div class="logout"><div class="mfw-security-service-page mfw-security-service--mfwsecurity-logout-page"><p>Method that clears current session.</p>
+<p>This method triggers <a href="#/api/mfw.security.service:$mfwSecurity#events_$mfwsecuritylogin"><code>$mfwSecurityLogout</code></a> event.</p>
+</div></div>
+</li>
+<li><a href="https://github.com/worldline-spain/mfw-responsive-angular/blob/75af72a/src/mfw-security.service.js#L277" class="view-source icon-eye-open"> </a><h3 id="methods_me">me()</h3>
+<div class="me"><h5 id="methods_me_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-userinfo">UserInfo</a></td><td><div class="mfw-security-service-page mfw-security-service--mfwsecurity-me-page"><p>Current logged user</p>
+</div></td></tr></table></div>
+</li>
+<li><a href="https://github.com/worldline-spain/mfw-responsive-angular/blob/75af72a/src/mfw-security.service.js#L356" class="view-source icon-eye-open"> </a><h3 id="methods_refreshaccesstoken">refreshAccessToken(accessToken)</h3>
+<div class="refreshaccesstoken"><h5 id="methods_refreshaccesstoken_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>accessToken</td><td><a href="" class="label type-hint type-hint-string">String</a></td><td><div class="mfw-security-service-page mfw-security-service--mfwsecurity-refreshaccesstoken-page"><p>New access token</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+<div class="member event"><h2 id="events">Events</h2>
+<ul class="events"><li><h3 id="events_$mfwsecuritylogin">$mfwSecurityLogin</h3>
+<div class="$mfwsecuritylogin"><div class="mfw-security-service-page mfw-security-service--mfwsecurity-mfwsecuritylogin-page"><p>Event triggered when a new user logs in or when application startes
+using previous stored credentials.</p>
+</div><div class="inline"><h4 id="events_$mfwsecuritylogin_type">Type:</h4>
+<div class="type">broadcast</div>
+</div>
+<div class="inline"><h4 id="events_$mfwsecuritylogin_target">Target:</h4>
+<div class="target">$rootScope</div>
+</div>
+<h5 id="events_$mfwsecuritylogin_target_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>userInfo</td><td><a href="" class="label type-hint type-hint-userinfo">UserInfo</a></td><td><div class="mfw-security-service-page mfw-security-service--mfwsecurity-mfwsecuritylogin-page"><p>User information.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_$mfwsecuritylogout">$mfwSecurityLogout</h3>
+<div class="$mfwsecuritylogout"><div class="mfw-security-service-page mfw-security-service--mfwsecurity-mfwsecuritylogout-page"><p>Event triggered when user logs out.</p>
+</div><div class="inline"><h4 id="events_$mfwsecuritylogout_type">Type:</h4>
+<div class="type">broadcast</div>
+</div>
+<div class="inline"><h4 id="events_$mfwsecuritylogout_target">Target:</h4>
+<div class="target">$rootScope</div>
+</div>
+</div>
+</li>
+<li><h3 id="events_$mfwsecuritylogout">$mfwSecurityLogout</h3>
+<div class="$mfwsecuritylogout"><div class="mfw-security-service-page mfw-security-service--mfwsecurity-mfwsecuritylogout-page"><p>Event triggered when user logs out.</p>
+</div><div class="inline"><h4 id="events_$mfwsecuritylogout_type">Type:</h4>
+<div class="type">broadcast</div>
+</div>
+<div class="inline"><h4 id="events_$mfwsecuritylogout_target">Target:</h4>
+<div class="target">$rootScope</div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
