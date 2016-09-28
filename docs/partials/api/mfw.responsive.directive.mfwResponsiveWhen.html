@@ -1,0 +1,51 @@
+<a href="https://github.com/worldline-spain/mfw-responsive-angular/blob/55ce994/src/mfw-responsive.service.js#L613" class="view-source"><i class="icon-eye-open"> </i>View source</a><h1><code ng:non-bindable="">mfwResponsiveWhen</code>
+<div><span class="hint">directive in module <code ng:non-bindable="">mfw.responsive</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="mfw-responsive-directive-page mfw-responsive-directive-mfwresponsivewhen-page"><p>Directive that shows/hides DOM content depending on current matching rules or extensions.</p>
+<p>It&#39;s implemented internally using AngularJS <a href="https://docs.angularjs.org/api/ng/directive/ngIf"><code>ngIf</code></a> directive.</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as attribute<pre class="prettyprint linenums">&lt;ANY mfw-responsive-when="{String}"&gt;
+   ...
+&lt;/ANY&gt;</pre>
+<h3 id="usage_directive-info">Directive info</h3>
+<div class="directive-info"><ul><li>This directive creates new scope.</li>
+</ul>
+</div>
+<h4 id="usage_directive-info_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>mfwResponsiveWhen</td><td><a href="" class="label type-hint type-hint-string">String</a></td><td><div class="mfw-responsive-directive-page mfw-responsive-directive-mfwresponsivewhen-page"><p>Name of the rule or extension that lets the content appear on screen.</p>
+</div></td></tr></tbody></table></div>
+<h2 id="example">Example</h2>
+<div class="example"><div class="mfw-responsive-directive-page mfw-responsive-directive-mfwresponsivewhen-page"><h4 id="example_source">Source</h4>
+<div source-edit="demo-when" source-edit-deps="angular.js app.js" source-edit-html="index.html-0" source-edit-css="" source-edit-js="app.js" source-edit-json="" source-edit-unit="" source-edit-scenario=""></div>
+<div class="tabbable"><div class="tab-pane" title="index.html">
+<pre class="prettyprint linenums" ng-set-text="index.html-0" ng-html-wrap-loaded="demo-when angular.js app.js"></pre>
+<script type="text/ng-template" id="index.html-0">
+<div mfw-responsive-when="small">It's a small screen: sm or xs.</div>
+<div mfw-responsive-when="phone">It's a phone.</div>
+<div mfw-responsive-when="large">It's a large screen: desktop or tablet.</div>
+<div mfw-responsive-when="tablet">It's a tablet.</div>
+<div mfw-responsive-when="tablet-portrait">It's a tablet portrait.</div>
+<div mfw-responsive-when="tablet-landscape">It's a tablet landscape.</div>
+</script>
+</div>
+<div class="tab-pane" title="app.js">
+<pre class="prettyprint linenums" ng-set-text="app.js"></pre>
+<script type="text/ng-template" id="app.js">
+angular.module('demo-when', ['mfw.responsive'])
+  .config(function ($mfwResponsiveProvider) {
+    $mfwResponsiveProvider.addExtensions({
+      large: 'desktop,tablet',
+      small: 'sm,xs',
+      'tablet-landscape': ['tablet', 'landscape'],
+      'tablet-portrait': ['tablet', 'portrait']
+    });
+  });
+</script>
+</div>
+</div><h4 id="example_demo">Demo</h4>
+<div class="well doc-example-live animate-container" ng-embed-app="demo-when" ng-set-html="index.html-0" ng-eval-javascript="app.js"></div>
+</div></div>
+</div>

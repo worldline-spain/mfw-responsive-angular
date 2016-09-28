@@ -48,6 +48,6 @@
     "lint": "node_modules/.bin/grunt lint",
     "build": "node_modules/.bin/grunt build",
     "docs": "node_modules/.bin/grunt docs",
-    "deliver": "npm run docs && npm run build"
+    "deliver": "npm run build && npm run docs"
   }
 }

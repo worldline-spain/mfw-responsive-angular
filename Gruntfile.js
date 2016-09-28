@@ -52,8 +52,14 @@ module.exports = function (grunt) {
         title: false,
         html5Mode: false,
         editLink: false,
-        editExample: false,
-        dest: './docs'
+        editExample: true,
+        dest: './docs',
+        scripts: [
+          'angular.js',
+          'bower_components/angular-media-queries/match-media.js',
+          'bower_components/ui-router/release/angular-ui-router.js',
+          'dist/mfw-responsive.service.js'
+        ]
       },
       api: {
         src: 'src/*.js',
