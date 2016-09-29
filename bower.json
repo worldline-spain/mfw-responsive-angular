@@ -1,0 +1,40 @@
+{
+  "name": "mfw-responsive-angular",
+  "description": "MFW Responsive module for AngularJS apps",
+  "authors": [
+    "Juan Belmonte Rodríguez <juan.belmonte@worldline.com> (https://github.com/jbelmonte)",
+    "Jordi Escudero Subirana <jordi.escudero@worldline.com> (https://github.com/jordiescudero)"
+  ],
+  "license": "Apache-2.0",
+  "main": [
+    "dist/mfw-security.service.js'"
+  ],
+  "homepage": "https://github.com/worldline-spain/mfw-responsive-angular",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/worldline-spain/mfw-responsive-angular"
+  },
+  "keywords": [
+    "MFW",
+    "Responsive",
+    "media query",
+    "media queries",
+    "match media",
+    "$mfwResponsive"
+  ],
+  "moduleType": "globals",
+  "devDependencies": {
+    "angular": "^1.3.11",
+    "ui-router": "~0.2.18"
+  },
+  "dependencies": {
+    "angular-media-queries": "^0.6.0"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

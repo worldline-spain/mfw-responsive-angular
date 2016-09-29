@@ -1,0 +1,66 @@
+<a href="https://github.com/worldline-spain/mfw-responsive-angular/blob/a9a31d2/src/mfw-responsive.service.js#L538" class="view-source"><i class="icon-eye-open"> </i>View source</a><h1><code ng:non-bindable="">mfwResponsiveMatch</code>
+<div><span class="hint">directive in module <code ng:non-bindable="">mfw.responsive</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="mfw-responsive-directive-page mfw-responsive-directive-mfwresponsivematch-page"><p>Directive that adds responsive CSS classes to be node element it&#39;s bound.</p>
+<p>All matched rules will be bound as CSS prefixed with <code>device-</code> or the given prefix.
+Example:</p>
+<ul>
+<li><code>device-retina</code></li>
+<li><code>device-phone</code></li>
+<li><code>device-portrait</code></li>
+</ul>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as attribute<pre class="prettyprint linenums">&lt;ANY mfw-responsive-match="{String}"&gt;
+   ...
+&lt;/ANY&gt;</pre>
+<h3 id="usage_directive-info">Directive info</h3>
+<div class="directive-info"><ul><li>This directive creates new scope.</li>
+</ul>
+</div>
+<h4 id="usage_directive-info_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>mfwResponsiveMatch <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-string">String</a></td><td><div class="mfw-responsive-directive-page mfw-responsive-directive-mfwresponsivematch-page"><p>CSS class prefix to be used, defaults to <code>device-</code>.</p>
+</div></td></tr></tbody></table></div>
+<h2 id="example">Example</h2>
+<div class="example"><div class="mfw-responsive-directive-page mfw-responsive-directive-mfwresponsivematch-page"><h4 id="example_source">Source</h4>
+<div source-edit="demo-match" source-edit-deps="angular.js app.js" source-edit-html="index.html" source-edit-css="" source-edit-js="app.js" source-edit-json="" source-edit-unit="" source-edit-scenario=""></div>
+<div class="tabbable"><div class="tab-pane" title="index.html">
+<pre class="prettyprint linenums" ng-set-text="index.html" ng-html-wrap-loaded="demo-match angular.js app.js"></pre>
+<script type="text/ng-template" id="index.html">
+<div mfw-responsive-match view-classes></div>
+<div mfw-responsive-match="screen-" view-classes></div>
+</script>
+</div>
+<div class="tab-pane" title="app.js">
+<pre class="prettyprint linenums" ng-set-text="app.js"></pre>
+<script type="text/ng-template" id="app.js">
+angular.module('demo-match', ['mfw.responsive'])
+  .directive('viewClasses', function () {
+    return {
+      restrict: 'A',
+      controller: function ($scope, $element) {
+        $scope.$watch(function () {
+          return $element[0].className;
+        }, function () {
+          $element.html('Current class names: ' + prettyPrintClass($element));
+        });
+      }
+    };
+
+    function prettyPrintClass($elem) {
+      return '<ul>'+$elem[0].className.split(' ')
+        .sort()
+        .map(function (className) {
+            return '<li>'+className+'</li>';
+        }).join('')
+        +'</ul>';
+    }
+  });
+</script>
+</div>
+</div><h4 id="example_demo">Demo</h4>
+<div class="well doc-example-live animate-container" ng-embed-app="demo-match" ng-set-html="index.html" ng-eval-javascript="app.js"></div>
+</div></div>
+</div>
