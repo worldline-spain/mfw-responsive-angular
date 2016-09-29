@@ -1,31 +1,37 @@
-# MFW Client Security v1.0.0
+# MFW Responsive v1.0.0
 
 This AngularJS module provides a responsive-dependent logic to applications as part of **Mobile FrameWork (MFW)**.
 
 
 ## Features
 
-### Route interceptor
+This library relies on [`angular-match-media`](https://github.com/jacopotarantino/angular-match-media) to calculate user-defined rules based on CSS media queries.
+
+You can define aliases, from now on **rules**, for CSS media queries that lets you define your layouts depending on current screen layout.
+
+Rules can be combined logically (and/or) using **extensions**. An extension is a expression in the form 'rule1 AND rule2', 'rule1 OR rule2' and combinations of these forms.
+
+
+
+### Resolution-specific layout
+
 
 Provided implementation is based on [UI Router](https://github.com/angular-ui/ui-router).
 
-* Configure your states with required credentials (from your own role list) and the route interceptor will
-handle them and allow or deny access to them.
-* Configure your login state to be addressed to when no credentials are found.
+If your screens needs to be rendered in a very different way depending on screen size or resolution (tablet, smartphone, portrait, landscape, etc.) and it's not possible to implement this using plain CSS media queries, you'll need different layout HTML files.
+
+MFW Responsive lets you do this by:
+
+* Configuring your state `views` object with a new `responsive` object.
+* Specify the `templateUrl` associated to each rule or extension.
 
 
-### HTTP requests interceptor
-
-Provided implementation is based on [Restangular](https://github.com/mgonto/restangular).
-
-* Configure all your Restangular configurations to be updated with proper credentials when user logs in or logs out.
-* Handle error responses to broadcast a logout when `Unauthorized` response (HTTP status code 401) is received.
 
 
-### Show/hide HTML content based on user credentials
+### Show/hide HTML content based on current layout
 
-* Use directives to show or hide HTML content when a user is logged in or not.
-* Use directives to show or hide HTML content based on current user credentials.
+* Use directives to show or hide HTML content while screen resolution changes.
+
 
 
 ## Installation
@@ -49,50 +55,83 @@ Download source files and include them into your project sources.
 
 Once dependency has been downloaded, configure your application module(s) to require:
 
-* `mfw.responsive` module: `$mfwSecurity` service and directives.
-* `mfw.responsive.storage.cookies` module: store credentials in cookies (depends on `ngCookies`).
-* `mfw.responsive.storage.localstorage` module: store credentials in `localStorage`.
-* `mfw.responsive.user-parser.jwt` module: parse JSON Web Tokens (JWT) after a successful login to a RESTful endpoint (depends on `angular-jwt`).
-* `mfw.responsive.user-parser.identity` module: dummy parser that performs the identity logic: returns what it receives to parse.
-* `mfw.responsive.route-interceptor.uirouter` module (optional): configure `ui.router` states for required credentials (depends on `ui.router`).
-* `mfw.responsive.http-handler.restangular` module (optional): configure `Restangular` with authorization HTTP headers and error interceptors (depends on `restangular`).
+* `mfw.responsive` module: `$mfwResponsive` service and directives.
 
 ```js
 angular
   .module('your-module', [
       // Your other dependencies
-      'mfw.responsive',
-      'mfw.responsive.storage.cookies',
-      'mfw.responsive.user-parser.jwt',
-      'mfw.responsive.route-interceptor.uirouter',
-      'mfw.responsive.http-handler.restangular'
+      'mfw.responsive'
   ]);
 ```
 
-Inject `$mfwSecurity` service to request for login status or user credentials.
+Inject `$mfwResponsive` service to request for current valid rules.
 
-Use `mfw-sec-*` directives in your HTML templates.
+Use `mfw-responsive-*` directives in your HTML templates.
 
-
-> For further documentation, please read the generated `ngDocs` documentation inside `docs/` folder.
-
-
-### Configuration
-
-Security is configured by updating properties in constant objects on each module.
-
-> *Important*: Update constants in `module.config` phase.
 
 
 > For further documentation, please read the generated `ngDocs` documentation inside `docs/` folder.
 
 
-## Extensions
+### Configure
 
-If you want to use a different storage, or credentials information parser, just implement a new *service* using original API
-and update `$mfwSecurityConfig` constant object to use them in configuration phase.
+Configure your rules and extensions in *config* phase by injecting `ionicResponsiveProvider `.
+
+```js
+angular
+  .module('your-module')
+  .config(configResponsive);
+
+configResponsive.$inject = ['$ionicResponsiveProvider'];
+function configResponsive($ionicResponsiveProvider) {
+  $ionicResponsiveProvider.config({
+    reloadOnResize: true
+  });
+  $ionicResponsiveProvider.addRules({
+    retina: 'only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx)',
+    phone: '(max-width: 767px)',
+    tablet: '(min-width: 768px) and (max-width: 1024px)',
+    desktop: '(min-width: 1025px)',
+    portrait: '(orientation: portrait)',
+    landscape: '(orientation: landscape)'
+  });
+  $ionicResponsiveProvider.addExtensions({
+    // Comma-separated: OR
+    large: 'desktop,tablet',
+    small: 'sm,xs',
+
+    // Array elements: AND
+    'tablet-landscape': ['tablet', 'landscape'],
+    'phone-portrait': ['phone', 'portrait']
+  });
+}
+```
+
+### Define responsive layouts for states
+
+Set responsive layouts while defining your `ui.router` states:
+
+```js
+$stateProvider.state('app.dashboard', {
+  url: '/dashboard',
+  views: {
+    responsive: {
+      'tablet': 'app/dashboard/dashboard-tablet.html',
+      'phone': 'app/dashboard/dashboard-phone.html'
+    }
+  }
+});
+```
+
+Under the scenes MFW Responsive [*decorates*](http://angular-ui.github.io/ui-router/site/#/api/ui.router.state.$stateProvider#methods_decorate) the `views` property and it will add a `templateProvider` function that checks for current screen size and resolution and then return proper `templateUrl` value.
+
+If you enable `reloadOnResize` (`true` by default), `$mfwResponsive` will be aware of dynamic screen resize (browser or mobile device rotation) and it will reload the current state if displayed layout is no longer valid.
+
 
 > For further documentation, please read the generated `ngDocs` documentation inside `docs/` folder.
+
+
 
 
 ## Development
@@ -101,11 +140,14 @@ and update `$mfwSecurityConfig` constant object to use them in configuration pha
 * Update package.json version
 * Tag Git with same version numbers as NPM
 * Check for valid `ngDocs` output inside `docs/` folder
+* Apply linting rules
 
 > **Important**: Run `npm install` before anything. This will install NPM and Bower dependencies.
 
+> **Important**: Run `npm run lint`.
+
 > **Important**: Run `npm run deliver` before committing anything. This will build documentation and distribution files.
-> It's a shortcut for running both `docs` and `build` scripts.
+
 
 ### NPM commands
 
@@ -133,7 +175,7 @@ $ npm run docs
 $ npm run lint
 ```
 
-* Deliver: **run it before committing to Git**. It's a shortcut for `docs` and `build` scripts:
+* Deliver: **run it before committing to Git**. It's a shortcut for `build` and `docs` scripts:
 
 ```shell
 $ npm run deliver
