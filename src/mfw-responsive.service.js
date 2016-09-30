@@ -150,11 +150,11 @@
      *
      * @param {Object} extensions New set of extensions:
      *
-     * * **AND**:
-     *   * rule1 AND rule2: set a `string` with a list of rules separated by a comma.
-     *   * E.g.: `{ large: 'tablet,desktop' }`
      * * **OR**:
-     *   * rule1 OR rule2: set a `string[]` with all rules in it.
+     *   * rule1 OR rule2: set a `string` with a list of rules separated by a comma.
+     *   * E.g.: `{ large: 'tablet,desktop' }`
+     * * **AND**:
+     *   * rule1 AND rule2: set a `string[]` with all rules in it.
      *   * E.g.: `{'tablet-landscape': ['tablet', 'landscape']}`
      */
     this.addExtensions = function (extensions) {
